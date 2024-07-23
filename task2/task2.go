@@ -1,18 +1,32 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
 func main() {
-	var str string
+	// Читаем входные данные
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input)
 
-	//todo - почему-то считываем только символы до пробела, после пробела не видит их
-	fmt.Scan(&str)
-	//fmt.Fscan(os.Stdin, &str)
+	// Разделяем строку на элементы
+	elements := strings.Fields(input)
 
-	slice := strings.SplitAfter(str, " ")
-	fmt.Println(str, slice, len(slice), cap(slice))
-	fmt.Printf("Квадрат со стороной %d", cap(slice))
+	// Определяем длину массива
+	N := len(elements)
+
+	// Печатаем сообщение
+	fmt.Printf("Квадрат со стороной %d\n", N)
+
+	// Формируем и печатаем квадрат
+	for i := 0; i < N; i++ {
+		for j := 0; j < N; j++ {
+			fmt.Print(elements[j], " ")
+		}
+		fmt.Println()
+	}
 }
