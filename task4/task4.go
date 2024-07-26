@@ -18,7 +18,8 @@ func main() {
 	mStr = strings.TrimSpace(mStr)
 	M, _ := strconv.Atoi(mStr)
 
-	// Создаем слайсы для хранения значений n и T
+	// Создаем слайсы для хранения значений
+	// n - количество пунктов выдачи, T - возможные варианты обхода
 	nValues := make([]*big.Int, M+1)
 	tValues := make([]int, M+1)
 
