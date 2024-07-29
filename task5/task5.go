@@ -9,6 +9,7 @@ import (
 )
 
 // верное решение
+
 func main() {
 	// Создаем новый ридер для чтения данных из стандартного ввода
 	reader := bufio.NewReader(os.Stdin)

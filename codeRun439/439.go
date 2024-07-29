@@ -7,37 +7,37 @@ import (
 	"strings"
 )
 
-// проходит 19 из 25 тестов
+// работает
+
 func main() {
-	// Чтение входных данных
+	// Чтение ввода
 	reader := bufio.NewReader(os.Stdin)
 	text, _ := reader.ReadString('\n')
 	text = strings.TrimSpace(text)
 
 	// Словарь для подсчета пар символов
-	substrCounts := make(map[string]int)
+	pairCounts := make(map[string]int)
 
-	// Разбиение текста на слова и подсчет подстрок
+	// Разбиение текста на слова
 	words := strings.Fields(text)
+
+	// Подсчет пар символов в каждом слове
 	for _, word := range words {
-		wordLen := len(word)
-		for i := 0; i < wordLen; i++ {
-			for j := i + 1; j <= wordLen; j++ {
-				substr := word[i:j]
-				substrCounts[substr]++
-			}
+		for i := 0; i < len(word)-1; i++ {
+			// выбираем пару соседних символов
+			pair := word[i : i+2]
+			// увеличиваем счетчик этой пары на 1
+			pairCounts[pair]++
 		}
 	}
-	fmt.Println("words", words)
-	fmt.Println("substrCounts", substrCounts)
 
-	// Поиск самой частой подстроки
+	// Поиск самой часто встречающейся пары символов
 	maxCount := 0
 	var result string
-	for substr, count := range substrCounts {
-		if (count > maxCount || (count == maxCount && substr > result)) && len(substr) > 1 {
+	for pair, count := range pairCounts {
+		if count > maxCount || (count == maxCount && pair > result) {
 			maxCount = count
-			result = substr
+			result = pair
 		}
 	}
 
