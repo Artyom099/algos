@@ -2,7 +2,9 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -20,6 +22,18 @@ func main() {
 
 	nStr, _ := reader.ReadString('\n')
 	nStr = strings.TrimSpace(nStr)
-	n, _ := strconv.Atoi(nStr)
+	nSlice := strings.Split(numbersStr, " ")
+	fmt.Println(numbersArr)
+	fmt.Println(nSlice)
 
+	var buttonsForAdd int = 0
+
+	for n := range nSlice {
+		hasButton := slices.Contains(numbersArr, n)
+		fmt.Println(hasButton)
+		if !hasButton {
+			buttonsForAdd++
+		}
+	}
+	fmt.Println(buttonsForAdd)
 }
