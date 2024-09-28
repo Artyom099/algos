@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-//
+// todo - надо использовать множество
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
